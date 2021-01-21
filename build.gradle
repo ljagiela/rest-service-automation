@@ -1,0 +1,82 @@
+plugins {
+    id "io.qameta.allure" version "2.8.1"
+    id 'java'
+    id 'idea'
+    id 'java-gradle-plugin'
+    id 'com.adarshr.test-logger' version "2.0.0"
+    id "io.freefair.lombok" version "5.0.1"
+}
+
+group 'com.peer39.tested-service.automation'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+
+    maven { url "http://artifact01.nj.peer39.com:8081/artifactory/libs-release" }
+    maven { url "http://artifact01.nj.peer39.com:8081/artifactory/libs-snapshot" }
+    maven {
+        credentials {
+            username 'admin'
+            password 'password'
+        }
+        url = "http://artifact01.nj.peer39.com:8081/artifactory/libs-release-local"
+        metadataSources {
+            artifact()
+        }
+    }
+}
+
+ext {
+    allureVersion = '2.13.2'
+    assertJVersion = '3.15.0'
+    junitJupiterVersion = '5.6.1'
+    log4jVersion = '2.13.1'
+    ownerVersion = '1.0.12'
+    restAssuredVersion = '4.2.0'
+}
+
+dependencies {
+    testCompile group: "org.junit.jupiter", name: "junit-jupiter-api", version: junitJupiterVersion
+    testCompile group: "org.junit.jupiter", name: "junit-jupiter-engine", version: junitJupiterVersion
+    testCompile group: "org.junit.jupiter", name: "junit-jupiter-params", version: junitJupiterVersion
+    testCompile group: 'io.qameta.allure', name: 'allure-rest-assured', version: allureVersion
+    testCompile group: 'io.qameta.allure', name: 'allure-junit5', version: allureVersion
+    testCompile group: 'io.qameta.allure', name: 'allure-assertj', version: allureVersion
+    testCompile group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
+    testCompile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
+    compile group: 'org.aeonbits.owner', name: 'owner', version: ownerVersion
+    testCompile group: 'org.assertj', name: 'assertj-core', version: assertJVersion
+    testCompile group: 'io.rest-assured', name: 'rest-assured', version: restAssuredVersion
+    testCompile group: 'org.json', name: 'json', version: '20201115'
+    testCompile group: 'com.jcraft', name: 'jsch', version: '0.1.50'
+}
+
+allure {
+    autoconfigure = true
+    version = "${allureVersion}"
+    useJUnit5 {
+        version = "${allureVersion}"
+    }
+}
+
+test {
+    useJUnitPlatform {}
+
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\nTest result: ${result.resultType}"
+            println "Test summary: ${result.testCount} tests, " +
+                    "${result.successfulTestCount} succeeded, " +
+                    "${result.failedTestCount} failed, " +
+                    "${result.skippedTestCount} skipped"
+        }
+    }
+
+    systemProperty "env", System.getProperty("env")
+}
+
+clean.doFirst {
+    delete "${rootDir}/allure-results"
+}
