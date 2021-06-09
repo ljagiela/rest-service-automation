@@ -10,6 +10,12 @@ plugins {
 group 'com.peer39.tested-service.automation'
 version '1.0-SNAPSHOT'
 
+compileTestJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    options.encoding = 'UTF-8'
+}
+
 repositories {
     mavenCentral()
     mavenLocal()
