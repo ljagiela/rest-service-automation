@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Run tests') {
             steps {
-                sh "./gradlew clean test -Penv=${params.Deployment_Environment}"
+                sh "./gradlew clean test -Penv=${params.Deployment_Environment} -Dorg.gradle.logging.level=lifecycle"
             }
         }
     }

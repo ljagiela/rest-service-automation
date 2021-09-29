@@ -1,6 +1,5 @@
 package com.peer39.testedservice.automation;
 
-import com.peer39.testedservice.automation.properties.BaseConfig;
 import com.peer39.testedservice.automation.utils.AllureUtils;
 import com.peer39.testedservice.automation.utils.RestAssuredUtils;
 import org.aeonbits.owner.ConfigFactory;

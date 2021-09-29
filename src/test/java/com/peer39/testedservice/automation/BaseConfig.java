@@ -1,4 +1,4 @@
-package com.peer39.testedservice.automation.properties;
+package com.peer39.testedservice.automation;
 
 
 import org.aeonbits.owner.Config;
