@@ -41,12 +41,3 @@ gradle-app.setting
 .project
 .settings/
 bin/
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Trashes
-ehthumbs.db
-Thumbs.db
-
