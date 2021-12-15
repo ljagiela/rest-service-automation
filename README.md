@@ -1,18 +1,18 @@
-# tested-service service test automation
+# mock-service test automation
 #
 ## Running tests ##
 
 Tested environment can be configured with `env` project property. 
-Possible values are `stg`, `dev`, `prod`. 
-Default value is `stg`.
+Possible values are `localhost`, `stg`. 
+Default value is `localhost`.
 
 Run all tests (stg):
 ```bash
 ./gradlew clean test
 ```
 Supported params:
-* `--tests E2E.e2e` - to run specific test (E2E suite -> e2e method/test)
-* `-Penv=(localhost|stg|dev)` - to run on specific env
+* `--tests MetadataTest.shouldReturnValidMetadataForValidSubject` - to run specific test (MetadataTest (class) suite -> shouldReturnValidMetadataForValidSubject method/test)
+* `-Penv=(localhost|stg)` - to run on specific env
 
 ## Reporting ##
 To generate and host reports locally run:

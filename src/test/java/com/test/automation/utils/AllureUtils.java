@@ -1,6 +1,6 @@
-package com.peer39.testedservice.automation.utils;
+package com.test.automation.utils;
 
-import com.peer39.testedservice.automation.BaseTest;
+import com.test.automation.BaseTest;
 import lombok.SneakyThrows;
 
 import java.nio.file.Files;

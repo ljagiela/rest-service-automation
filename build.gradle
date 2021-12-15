@@ -7,7 +7,7 @@ plugins {
     id "io.freefair.lombok" version "5.0.1"
 }
 
-group 'com.peer39.tested-service.automation'
+group 'com.test.automation'
 version '1.0-SNAPSHOT'
 
 compileTestJava {
@@ -19,19 +19,6 @@ compileTestJava {
 repositories {
     mavenCentral()
     mavenLocal()
-
-    maven { url "http://artifact01.nj.peer39.com:8081/artifactory/libs-release" }
-    maven { url "http://artifact01.nj.peer39.com:8081/artifactory/libs-snapshot" }
-    maven {
-        credentials {
-            username 'admin'
-            password 'password'
-        }
-        url = "http://artifact01.nj.peer39.com:8081/artifactory/libs-release-local"
-        metadataSources {
-            artifact()
-        }
-    }
 }
 
 ext {
@@ -41,6 +28,7 @@ ext {
     log4jVersion = '2.13.1'
     ownerVersion = '1.0.12'
     restAssuredVersion = '4.2.0'
+    jsonSchemaValidatorVersion = '1.12.1'
 }
 
 dependencies {
@@ -56,6 +44,8 @@ dependencies {
     testCompile group: 'org.assertj', name: 'assertj-core', version: assertJVersion
     testCompile group: 'io.rest-assured', name: 'rest-assured', version: restAssuredVersion
     testCompile group: 'org.json', name: 'json', version: '20201115'
+    testCompile group: 'com.jcraft', name: 'jsch', version: '0.1.50'
+    testCompile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.0'
     testCompile group: 'com.jcraft', name: 'jsch', version: '0.1.50'
 }
 

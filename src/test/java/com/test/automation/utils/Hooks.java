@@ -1,4 +1,4 @@
-package com.peer39.testedservice.automation.utils;
+package com.test.automation.utils;
 
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.extension.ExtensionContext.Namespace.GLOBAL;
 
 public class Hooks implements BeforeAllCallback, ExtensionContext.Store.CloseableResource {
 
-    private final Logger LOG = Logger.getLogger(getClass().getName());
     private static boolean started = false;
+    private final Logger LOG = Logger.getLogger(getClass().getName());
 
     @Override
     public void beforeAll(ExtensionContext context) {
