@@ -25,10 +25,8 @@ public class Property {
                 .when()
                 .pathParam(PathParams.PROPERTY, propertyRequest.getProperty())
                 .pathParam(PathParams.SUBJECT, propertyRequest.getSubject())
-                .log().all()
                 .get(Endpoints.PROPERTY_URL)
                 .then()
-                .log().all()
                 .extract()
                 .response();
     }

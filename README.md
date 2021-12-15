@@ -4,7 +4,7 @@
 
 Tested environment can be configured with `env` project property. 
 Possible values are `localhost`, `stg`. 
-Default value is `localhost`.
+Default value is `stg`.
 
 Run all tests (stg):
 ```bash

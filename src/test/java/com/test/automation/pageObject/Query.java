@@ -20,11 +20,9 @@ public class Query {
     public Response sendPostRequest(QueryRequest queryRequest) {
         return given()
                 .when()
-                .log().all()
                 .body(queryRequest.createJsonBody())
                 .post(Endpoints.QUERY_URL)
                 .then()
-                .log().all()
                 .extract()
                 .response();
     }

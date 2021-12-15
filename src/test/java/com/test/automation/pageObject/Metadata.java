@@ -19,10 +19,8 @@ public class Metadata {
         return given()
                 .when()
                 .pathParam(PathParams.SUBJECT, subject)
-                .log().all()
                 .get(Endpoints.METADATA_URL)
                 .then()
-                .log().all()
                 .extract()
                 .response();
     }
